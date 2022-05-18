@@ -1,0 +1,13 @@
+.device_list {
+  margin: 3rem;
+  width: 350px;
+  border: 1px solid blue;
+  padding: 5px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+.device_list li {
+  margin: 7px auto;
+  padding: 5px;
+  border: 1px solid;
+}
