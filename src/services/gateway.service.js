@@ -4,12 +4,17 @@ export const getAllGateway = async () => {
         method: "GET",
         headers: { "Content-Type": "application/json" }
     };
-    const response = await fetch("http://localhost:5200/api/gateway", requestOptions)
-    const { success, data } = await response.json();
-    if (success) {
-        return data
+    try {
+        const response = await fetch("http://localhost:5200/api/gateway", requestOptions)
+        const { success, data } = await response.json();
+        if (success) {
+            return data
+        }
+        return;
+    } catch (error) {
+
+        return { message: `Error: ${error}` }
     }
-    return;
 }
 
 export const getOneGateway = async (serial) => {
@@ -17,13 +22,19 @@ export const getOneGateway = async (serial) => {
         method: "GET",
         headers: { "Content-Type": "application/json" }
     };
-    const response = await fetch(`http://localhost:5200/api/gateway/${serial}`, requestOptions)
-    const { success, data } = response.json();
+    try {
+        const response = await fetch(`http://localhost:5200/api/gateway/${serial}`, requestOptions)
+        const { success, data } = response.json();
 
-    if (success) {
-        return data
+        if (success) {
+            return data
+        }
+        return;
+    } catch (error) {
+
+        return { message: `Error: ${error}` }
     }
-    return;
+
 }
 
 export const addGateway = async (item) => {
@@ -32,9 +43,51 @@ export const addGateway = async (item) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(item),
     };
+    try {
+        let response = await fetch(`http://localhost:5200/api/gateway`, requestOptions);
+        let data = await response.json();
 
-    let response = await fetch(`http://localhost:5200/api/gateway`, requestOptions);
-    let data = await response.json();
+        return data
+    } catch (error) {
 
-    return data
+        return { message: `Error: ${error}` }
+    }
+}
+
+export const updateGateway = async (serial) => {
+    const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(serial),
+    };
+    try {
+        let response = await fetch(`http://localhost:5200/api/gateway`, requestOptions);
+        let { success, message } = await response.json();
+        if (success) return { message }
+
+        return
+    } catch (error) {
+
+        return { message: `Error: ${error}` }
+    }
+
+}
+
+export const deleteGateway = async (item) => {
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+    };
+    try {
+        let response = await fetch(`http://localhost:5200/api/gateway`, requestOptions);
+        let { success, message } = await response.json();
+
+        if (success) return { message }
+        return
+    } catch (error) {
+
+        return { message: `Error: ${error}` }
+    }
+
 }

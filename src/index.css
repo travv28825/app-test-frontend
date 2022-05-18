@@ -28,6 +28,11 @@ header {
   height: 2rem;
   border: 1px solid;
 }
+header ul li:hover {
+  background: rgb(59, 59, 59);
+  color: white;
+  border-bottom: 2px solid aqua;
+}
 .info-data {
   margin-top: 3rem;
 }
@@ -64,96 +69,4 @@ header {
   background: rgb(122, 121, 121);
   text-align: center;
   color: black;
-}
-header ul li:hover {
-  background: rgb(59, 59, 59);
-  color: white;
-  border-bottom: 2px solid aqua;
-}
-.actions-gateway {
-  display: flex;
-}
-
-.add_section {
-  margin: 4rem;
-  display: flex;
-}
-.add_inputs,
-.add_buttons {
-  display: flex;
-  flex-direction: column;
-  width: 350px;
-  padding: 1rem;
-}
-.add_inputs input,
-.add_inputs select {
-  margin: 0.3rem;
-  padding: 5px;
-}
-.device_list {
-  border: 1px solid blue;
-  padding: 5px;
-  margin: 0.3rem;
-}
-.list_d {
-  max-height: 300px;
-  overflow-y: auto;
-  border: 1px solid blue;
-  padding: 5px;
-}
-.list_d li {
-  margin: 10px 5px;
-  box-shadow: 0 0 2px;
-  padding: 4px;
-}
-.device_list button {
-  padding: 3px;
-  margin: 4px auto;
-  background: #1c8a21;
-  color: white;
-  border: 0;
-  box-shadow: 0 0 2px black;
-}
-.list_d span {
-  background: gray;
-  color: white;
-  padding: 3px;
-}
-.list_d p {
-  margin: 10px 0;
-}
-.online {
-  padding: 3px;
-  color: #0202f9;
-}
-.offline {
-  padding: 3px;
-  color: #010118;
-}
-.btn-remove {
-  padding: 3px;
-  background: #af1010;
-  color: white;
-  border: 0;
-}
-.add_buttons button {
-  padding: 8px;
-  background: #1383e7;
-  color: white;
-  border: 0;
-  margin: 0.3rem;
-}
-.add_buttons button:hover {
-  background: #0b4a81;
-}
-
-.add_devices_list {
-  padding: 1rem;
-  min-width: 450px;
-}
-.add_buttons p {
-  margin: 1rem 0;
-  border: 1px solid;
-  padding: 5px;
-  border-left: 4px solid gary;
 }
