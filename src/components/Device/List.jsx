@@ -1,18 +1,31 @@
 import { useEffect, useState } from "react";
 
 import Item from "./Item";
-import { getAllDevice } from "../../services";
+import { deleteDevice, getAllDevice } from "../../services";
+import './style.css'
 
 export default () => {
-  const [listG, setListG] = useState([]);
+  const [listD, setListD] = useState([]);
 
   useEffect(() => {
-    getAllDevice().then(setListG);
+    getAllDevice().then(setListD);
   }, []);
+
+  function deleteElement(uid) {
+    deleteDevice(uid).then(({ success, message }) => {
+      if (success) {
+        const arr = listD.filter(e => e.uid !== uid)
+        setListD(arr)
+      }
+      alert(message)
+    })
+  }
 
   return (
     <ul className="device_list">
-      {listG && listG.map((el, index) => <Item key={index} element={el} />)}
+      {listD && listD.map((el, index) => <Item key={index}
+        deleteElement={deleteElement}
+        element={el} />)}
     </ul>
   );
 };

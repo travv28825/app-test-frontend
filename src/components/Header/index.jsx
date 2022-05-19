@@ -1,26 +1,20 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default () => (
   <header>
     <div className="title-h">
-      <Link to="/gateway/list">
+      <NavLink to="/gateway/list">
         <h3 className="test">Home</h3>
-      </Link>
+      </NavLink>
     </div>
     <div className="actions-gateway">
       <p>gateways</p>
       <ul>
         <li>
-          <Link to="/gateway/list">List</Link>
+          <NavLink to="/gateway/list">List gateways</NavLink>
         </li>
         <li>
-          <Link to="/gateway/add">Create</Link>
-        </li>
-        <li>
-          <Link to="/gateway/update">Edit</Link>
-        </li>
-        <li>
-          <Link to="/gateway/delete">Delete</Link>
+          <NavLink to="/gateway/add">Add gateway</NavLink>
         </li>
       </ul>
     </div>
@@ -28,16 +22,10 @@ export default () => (
       <p>devices</p>
       <ul>
         <li>
-          <Link to="/device/list">List</Link>
+          <NavLink to="/device/list">List devices</NavLink>
         </li>
         <li>
-          <Link to="/device/add">Create</Link>
-        </li>
-        <li>
-          <Link to="/device/update">Edit</Link>
-        </li>
-        <li>
-          <Link to="/device/delete">Delete</Link>
+          <NavLink to="/device/add">Add device</NavLink>
         </li>
       </ul>
     </div>

@@ -26,7 +26,7 @@ export default () => (
     <Route path="/device" element={<DeviceLayout />}>
       <Route path="list" element={<ListDevice />} />
       <Route path="add" element={<AddDevice />} />
-      <Route path="update" element={<UpdateDevice />} />
+      <Route path="update/:uid" element={<UpdateDevice />} />
     </Route>
     <Route path="*" element={<NotFound />} />
   </Routes>

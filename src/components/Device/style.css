@@ -1,13 +1,55 @@
 .device_list {
   margin: 3rem;
-  width: 350px;
+  width: 400px;
   border: 1px solid blue;
   padding: 5px;
   max-height: 350px;
   overflow-y: auto;
 }
+
 .device_list li {
   margin: 7px auto;
   padding: 5px;
   border: 1px solid;
+  position: relative;
+}
+
+.online {
+  padding: 3px;
+  color: #0202f9;
+}
+
+.offline {
+  padding: 3px;
+  color: #010118;
+}
+
+
+.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_action_update,
+.btn_action_delete {
+  border: 1px solid;
+  padding: 5px;
+  text-align: center;
+  vertical-align: sub;
+  margin-left: 1px;
+}
+
+.btn_action_update {
+  background: #048904;
+  color: white;
+}
+
+.btn_action_delete {
+  background: #7c1313;
+  color: white;
 }

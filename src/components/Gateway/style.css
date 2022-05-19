@@ -1,11 +1,12 @@
 .gateway_list {
   margin: 3rem;
-  width: 350px;
+  width: 400px;
   border: 1px solid blue;
   padding: 5px;
   max-height: 350px;
   overflow-y: auto;
 }
+
 .gateway_list li {
   margin: 7px auto;
   padding: 5px;
@@ -13,20 +14,15 @@
   position: relative;
 }
 
-.online {
-  padding: 3px;
-  color: #0202f9;
-}
-.offline {
-  padding: 3px;
-  color: #010118;
-}
+
+
 .btn-remove {
   padding: 3px;
   background: #af1010;
   color: white;
   border: 0;
 }
+
 .actions-gateway {
   display: flex;
 }
@@ -35,6 +31,7 @@
   margin: 4rem;
   display: flex;
 }
+
 .add_inputs,
 .add_buttons {
   display: flex;
@@ -42,6 +39,7 @@
   width: 350px;
   padding: 1rem;
 }
+
 .add_buttons button {
   padding: 8px;
   background: #1383e7;
@@ -49,9 +47,11 @@
   border: 0;
   margin: 0.3rem;
 }
+
 .add_buttons button:hover {
   background: #0b4a81;
 }
+
 .add_buttons p {
   margin: 1rem 0;
   border: 1px solid;
@@ -70,6 +70,7 @@
   padding: 5px;
   margin: 0.3rem;
 }
+
 .device_list button {
   padding: 3px;
   margin: 4px auto;
@@ -85,17 +86,20 @@
   border: 1px solid blue;
   padding: 5px;
 }
+
 .list_d li {
   margin: 10px 5px;
   box-shadow: 0 0 2px;
   padding: 4px;
 
 }
+
 .list_d span {
   background: gray;
   color: white;
   padding: 3px;
 }
+
 .list_d p {
   margin: 10px 0;
 }
@@ -105,26 +109,40 @@
   min-width: 450px;
 }
 
-.actions{
+.actions {
   position: absolute;
   top: 0;
   right: 0;
   overflow: hidden;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
 .btn_action_update,
-.btn_action_delete{
+.btn_action_delete {
   border: 1px solid;
-    padding: 5px;
-    text-align: center;
-    vertical-align: sub;
-    margin-left: 1px;
+  padding: 5px;
+  text-align: center;
+  vertical-align: sub;
+  margin-left: 1px;
 }
-.btn_action_update{
+
+.btn_action_update {
   background: #048904;
   color: white;
 }
-.btn_action_delete{
+
+.btn_action_delete {
   background: #7c1313;
   color: white;
+}
+.online {
+  padding: 3px;
+  color: #0202f9;
+}
+
+.offline {
+  padding: 3px;
+  color: #010118;
 }

@@ -19,7 +19,7 @@ export const getOneDevice = async (serial) => {
         headers: { "Content-Type": "application/json" }
     };
     const response = await fetch(`http://localhost:5200/api/device/${serial}`, requestOptions)
-    const { success, data } = response.json();
+    const { success, data } = await response.json();
 
     if (success) {
         return data
@@ -38,4 +38,37 @@ export const addDevice = async (item) => {
     let data = await response.json();
 
     return data
+}
+
+export const updateDevice = async (item) => {
+    const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+    };
+    try {
+        const response = await fetch(`http://localhost:5200/api/device`, requestOptions);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        return { message: `Error: Error with the server, try again later` }
+    }
+
+}
+
+export const deleteDevice = async (uid) => {
+    const requestOptions = {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }
+    };
+    try {
+        const response = await fetch(`http://localhost:5200/api/device/${uid}`, requestOptions);
+        const data = await response.json();
+
+        return data
+    } catch (error) {
+
+        return { message: `Error: ${error}` }
+    }
+
 }

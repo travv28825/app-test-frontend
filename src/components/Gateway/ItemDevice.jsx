@@ -1,6 +1,10 @@
 export default ({ device, inList, addToGateway, removeFromGategay }) => (
   <li>
     <p>
+      <span>UID:</span>
+      {device.uid}
+    </p>
+    <p>
       <span>Vendor:</span>
       {device.vendor}
     </p>
@@ -66,5 +70,3 @@ function dateFormat(inputDate, format) {
 
   return format;
 }
-
-// console.log('Converted date: '+ dateFormat('2021-12-10', 'MM-dd-yyyy'));
