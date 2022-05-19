@@ -10,6 +10,7 @@
   margin: 7px auto;
   padding: 5px;
   border: 1px solid;
+  position: relative;
 }
 
 .online {
@@ -88,6 +89,7 @@
   margin: 10px 5px;
   box-shadow: 0 0 2px;
   padding: 4px;
+
 }
 .list_d span {
   background: gray;
@@ -103,3 +105,26 @@
   min-width: 450px;
 }
 
+.actions{
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  height: 100%;
+}
+.btn_action_update,
+.btn_action_delete{
+  border: 1px solid;
+    padding: 5px;
+    text-align: center;
+    vertical-align: sub;
+    margin-left: 1px;
+}
+.btn_action_update{
+  background: #048904;
+  color: white;
+}
+.btn_action_delete{
+  background: #7c1313;
+  color: white;
+}

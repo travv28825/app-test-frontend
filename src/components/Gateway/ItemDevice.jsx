@@ -11,13 +11,13 @@ export default ({ device, inList, addToGateway, removeFromGategay }) => (
     <p style={{ display: "flex" }}>
       <span>Status:</span>
       {device.status === "online" ? (
-        <p style={{ margin: "0" }} className="online">
+        <span style={{ margin: "0" }} className="online">
           Online
-        </p>
+        </span>
       ) : (
-        <p style={{ margin: "0" }} className="offline">
+        <span style={{ margin: "0" }} className="offline">
           Offline
-        </p>
+        </span>
       )}
     </p>
     <div className="options-list">

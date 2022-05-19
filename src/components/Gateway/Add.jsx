@@ -11,7 +11,6 @@ export default () => {
 
   useEffect(() => {
     getAllDevice().then(setListD);
-    console.log(listD);
   }, []);
 
   function handleData(e) {
@@ -45,9 +44,11 @@ export default () => {
     const datasend = { ...data, devices: deviceG };
 
     addGateway(datasend).then((data) => {
-      if (data.ipaddress !== "fail") {
-        setData({ serial: 0, human: "", ip: "" });
-        setDeviceG([]);
+      if (data.success !== false) {
+        if (data.ipaddress !== "fail") {
+          setData({ serial: 0, human: "", ip: "" });
+          setDeviceG([]);
+        }
       }
       setError(data.message);
     });
@@ -81,13 +82,13 @@ export default () => {
           <ul className="list_d" style={{ overflowY: "auto", maxHeight: "250px" }}>
             {deviceG.length > 0
               ? deviceG.map((device, index) => (
-                  <ItemDevice
-                    inList={false}
-                    removeFromGategay={removeFromGategay}
-                    key={index}
-                    device={device}
-                  />
-                ))
+                <ItemDevice
+                  inList={false}
+                  removeFromGategay={removeFromGategay}
+                  key={index}
+                  device={device}
+                />
+              ))
               : ""}
           </ul>
         </div>
