@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import Item from "./Item";
+import Item from "./src/Item";
 import { deleteGateway, getAllGateway } from "../../services";
 import "./style.css";
 
-export default () => {
+const ListG = () => {
   const [listG, setListG] = useState([]);
 
   useEffect(() => {
@@ -14,11 +14,11 @@ export default () => {
   function handleDelete(serial) {
     deleteGateway(serial).then(({ message }) => {
       const arr = listG.filter(e => e.serial !== serial)
+
       setListG(arr)
       alert(message)
     })
   }
-
 
   return (
     <ul className="gateway_list">
@@ -27,3 +27,5 @@ export default () => {
     </ul>
   );
 };
+
+export { ListG }

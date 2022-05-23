@@ -1,43 +1,34 @@
 import { Routes, Route } from "react-router-dom";
+
 // GATEWAY
-import AddGateway from "../Gateway/Add";
-import ListGateway from "../Gateway/List";
-import UpdateGateway from "../Gateway/Update";
+import { AddG, ListG, UpdateG } from '../Gateway'
 // DEVICE
 import AddDevice from "../Device/Add";
 import ListDevice from "../Device/List";
 import UpdateDevice from "../Device/Update";
-
-
+// PAGES
 import Home from "../Home";
-
-import Layout from "../layouts/Layout";
-import GatewayLayout from "../layouts/Gateway"
-import DeviceLayout from "../layouts/Device"
 
 export default () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/gateway" element={<GatewayLayout />}>
-      <Route path="list" element={<ListGateway />} />
-      <Route path="add" element={<AddGateway />} />
-      <Route path="update/:serial" element={<UpdateGateway />} />
-    </Route>
-    <Route path="/device" element={<DeviceLayout />}>
-      <Route path="list" element={<ListDevice />} />
-      <Route path="add" element={<AddDevice />} />
-      <Route path="update/:uid" element={<UpdateDevice />} />
-    </Route>
+    {/* gateway route */}
+    <Route path="/gateway/list" element={<ListG />} />
+    <Route path="/gateway/add" element={<AddG />} />
+    <Route path="/gateway/update/:serial" element={<UpdateG />} />
+    {/* devices route */}
+    <Route path="/device/list" element={<ListDevice />} />
+    <Route path="/device/add" element={<AddDevice />} />
+    <Route path="/device/update/:uid" element={<UpdateDevice />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
 
 const NotFound = () => (
   <h2>
-    Not Found 404 -----{" "}
+    Not Found 404-
     <a style={{ color: "blue" }} href="/">
-      {" "}
       Go back to home
-    </a>{" "}
+    </a>
   </h2>
 );

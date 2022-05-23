@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { deleteGateway } from "../../services";
 
 export default ({ element, deleteElement }) => (
   <li>
@@ -13,7 +12,6 @@ export default ({ element, deleteElement }) => (
       <Link
         className="btn_action_delete"
         onClick={() => deleteElement(element.serial)}
-        // onClick={()=>deleteGateway(element.serial).then(()=>window.location.reload())}
         to=""
       >
         Delete

@@ -1,4 +1,3 @@
-
 export const getAllGateway = async () => {
     const requestOptions = {
         method: "GET",
@@ -6,13 +5,9 @@ export const getAllGateway = async () => {
     };
     try {
         const response = await fetch("http://localhost:5200/api/gateway", requestOptions)
-        const { success, data } = await response.json();
-        if (success) {
-            return data
-        }
-        return;
+        const data = await response.json();
+        return data
     } catch (error) {
-
         return { message: `Error: ${error}` }
     }
 }
@@ -24,14 +19,10 @@ export const getOneGateway = async (serial) => {
             headers: { "Content-Type": "application/json" }
         };
         const response = await fetch(`http://localhost:5200/api/gateway/${serial}`, requestOptions)
-        const { success, data, message } = await response.json();
+        const data = await response.json();
 
-        if (success) {
-            return data
-        }
-        return;
+        return data
     } catch (error) {
-
         return { message: `Error: ${error}` }
     }
 
@@ -46,9 +37,9 @@ export const addGateway = async (item) => {
     try {
         const response = await fetch(`http://localhost:5200/api/gateway`, requestOptions);
         const data = await response.json();
+
         return data
     } catch (error) {
-
         return { message: `Error: ${error}` }
     }
 }
@@ -60,7 +51,7 @@ export const updateGateway = async (item) => {
         body: JSON.stringify(item),
     };
     try {
-        const response = await fetch(`http://localhost:5200/api/gateway`, requestOptions);
+        const response = await fetch(`http://localhost:5200/api/gateway/${item.serial}`, requestOptions);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -80,7 +71,6 @@ export const deleteGateway = async (serial) => {
 
         return data
     } catch (error) {
-
         return { message: `Error: ${error}` }
     }
 

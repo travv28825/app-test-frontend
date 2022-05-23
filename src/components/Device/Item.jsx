@@ -11,7 +11,7 @@ export default ({ element, deleteElement }) => (
       </Link>
       <Link
         className="btn_action_delete"
-        onClick={() => deleteElement(element.uid)}
+        onClick={deleteElement}
         to=""
       >
         Delete
@@ -19,7 +19,7 @@ export default ({ element, deleteElement }) => (
     </div>
     <p>UID: {element.uid}</p>
     <p>Vendor: {element.vendor}</p>
-    <p>Created: {dateFormat(element.created,"dd-MM-yy")}</p>
+    <p>Created: {dateFormat(element.created, "dd-MM-yy")}</p>
     <p>Status {element.status === "online" ? (
       <span style={{ margin: "0" }} className="online">
         Online

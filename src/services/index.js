@@ -1,2 +1,2 @@
-export * from './device.service'
-export * from './gateway.service'
+export * from './device.service';
+export * from './gateway.service';

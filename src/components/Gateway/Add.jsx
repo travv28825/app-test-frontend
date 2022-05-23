@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { addGateway, getAllDevice } from "../../services";
-import ItemDevice from "./ItemDevice";
+import ItemDevice from "./src/ItemDevice";
+import ListDevices from "./src/ListDevices";
 
-export default () => {
+const AddG = () => {
   //i can optimizate it using contexApi and useReducer
   const [data, setData] = useState({ serial: "", human: "", ip: "" });
   const [listD, setListD] = useState([]);
@@ -20,7 +21,9 @@ export default () => {
 
   function addDeviceToGateway(device) {
     let arr = [...deviceG];
+    // list without device to update list of devices
     let newList = listD.filter((e) => e.uid !== device.uid);
+
     if (arr.length < 10) {
       arr.push(device);
       setDeviceG(arr);
@@ -29,6 +32,7 @@ export default () => {
       setError("A gateway only cant 10 devices");
     }
   }
+
   function removeFromGategay(uid) {
     const aux = [...deviceG];
     const newList = aux.filter((x) => x.uid !== uid);
@@ -97,29 +101,9 @@ export default () => {
           {error === "" ? "" : <p>{error}</p>}
         </div>
       </div>
-
-      <div className="add_devices_list">
-        <div className="device_list">
-          {listD ? (
-            listD.length > 0 ? (
-              <ul className="list_d">
-                {listD.map((device, index) => (
-                  <ItemDevice
-                    inList={true}
-                    addToGateway={addDeviceToGateway}
-                    key={index}
-                    device={device}
-                  />
-                ))}
-              </ul>
-            ) : (
-              <p>Device list is empty</p>
-            )
-          ) : (
-            <p> Waiting for devices list</p>
-          )}
-        </div>
-      </div>
+      <ListDevices addDeviceToGateway={addDeviceToGateway} listD={listD}/>
     </section>
   );
 };
+
+export { AddG }

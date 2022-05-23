@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import { DeviceLinks } from "./DeviceLinks";
+import { GatewayLinks } from "./GatewayLinks";
 
 export default () => (
   <header>
@@ -7,27 +9,7 @@ export default () => (
         <h3 className="test">Home</h3>
       </NavLink>
     </div>
-    <div className="actions-gateway">
-      <p>gateways</p>
-      <ul>
-        <li>
-          <NavLink to="/gateway/list">List gateways</NavLink>
-        </li>
-        <li>
-          <NavLink to="/gateway/add">Add gateway</NavLink>
-        </li>
-      </ul>
-    </div>
-    <div className="actions-device">
-      <p>devices</p>
-      <ul>
-        <li>
-          <NavLink to="/device/list">List devices</NavLink>
-        </li>
-        <li>
-          <NavLink to="/device/add">Add device</NavLink>
-        </li>
-      </ul>
-    </div>
+    <GatewayLinks />
+    <DeviceLinks />
   </header>
 );

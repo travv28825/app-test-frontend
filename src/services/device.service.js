@@ -1,16 +1,16 @@
-
 export const getAllDevice = async () => {
     const requestOptions = {
         method: "GET",
         headers: { "Content-Type": "application/json" }
     };
-    const response = await fetch("http://localhost:5200/api/device", requestOptions)
-    const data = await response.json();
+    try {
+        const response = await fetch("http://localhost:5200/api/device", requestOptions)
+        const data = await response.json();
 
-    if (data.success) {
-        return data.data
+        return data
+    } catch (error) {
+        return { message: `Error: ${error}` }
     }
-    return;
 }
 
 export const getOneDevice = async (serial) => {
@@ -18,13 +18,14 @@ export const getOneDevice = async (serial) => {
         method: "GET",
         headers: { "Content-Type": "application/json" }
     };
-    const response = await fetch(`http://localhost:5200/api/device/${serial}`, requestOptions)
-    const { success, data } = await response.json();
+    try {
+        const response = await fetch(`http://localhost:5200/api/device/${serial}`, requestOptions)
+        const data = await response.json();
 
-    if (success) {
         return data
+    } catch (error) {
+        return { message: `Error: ${error}` }
     }
-    return;
 }
 
 export const addDevice = async (item) => {
@@ -33,11 +34,14 @@ export const addDevice = async (item) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(item),
     };
+    try {
+        let response = await fetch(`http://localhost:5200/api/device`, requestOptions);
+        let data = await response.json();
 
-    let response = await fetch(`http://localhost:5200/api/device`, requestOptions);
-    let data = await response.json();
-
-    return data
+        return data
+    } catch (error) {
+        return { message: `Error: ${error}` }
+    }
 }
 
 export const updateDevice = async (item) => {
@@ -47,8 +51,9 @@ export const updateDevice = async (item) => {
         body: JSON.stringify(item),
     };
     try {
-        const response = await fetch(`http://localhost:5200/api/device`, requestOptions);
+        const response = await fetch(`http://localhost:5200/api/device/${item.uid}`, requestOptions);
         const data = await response.json();
+        
         return data;
     } catch (error) {
         return { message: `Error: Error with the server, try again later` }
@@ -67,7 +72,6 @@ export const deleteDevice = async (uid) => {
 
         return data
     } catch (error) {
-
         return { message: `Error: ${error}` }
     }
 

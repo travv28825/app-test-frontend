@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import {
-  addGateway,
   getAllDevice,
   getOneGateway,
   updateGateway,
 } from "../../services";
-import ItemDevice from "./ItemDevice";
+import ItemDevice from "./src/ItemDevice";
+import ListDevices from "./src/ListDevices";
 
-export default () => {
+const UpdateG = () => {
   const [error, setError] = useState("");
   const { serial } = useParams();
   const [listD, setListD] = useState([]);
@@ -22,15 +23,19 @@ export default () => {
   useEffect(() => {
     getOneGateway(serial).then(gateway => {
       setData(gateway)
+
       getAllDevice().then(devices => {
         const devicesOfGateway = gateway.devices
         let exist = []
+
         const list = devices.reduce((acc, item) => {
           exist = devicesOfGateway.filter(d => d.uid === item.uid)
+
           if (exist.length === 0) {
             acc.push(item)
             exist = []
           }
+
           return acc
         }, [])
 
@@ -43,9 +48,11 @@ export default () => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   }
+
   function addDeviceToGateway(device) {
     let arr = data.devices
     let newList = listD.filter((e) => e.uid !== device.uid);
+
     if (arr.length < 10) {
       arr.push(device);
       setData({ ...data, devices: arr })
@@ -54,6 +61,7 @@ export default () => {
       setError("A gateway only cant 10 devices");
     }
   }
+
   function removeFromGategay(uid) {
     const aux = data.devices;
     const newList = aux.filter((x) => x.uid !== uid);
@@ -64,6 +72,7 @@ export default () => {
     setListD(arr);
     setData({ ...data, devices: newList })
   }
+
   function handleSubmit() {
     updateGateway(data).then(({ message }) => {
       setError(message)
@@ -116,29 +125,9 @@ export default () => {
           {error === "" ? "" : <p>{error}</p>}
         </div>
       </div>
-
-      <div className="add_devices_list">
-        <div className="device_list">
-          {listD ? (
-            listD.length > 0 ? (
-              <ul className="list_d">
-                {listD.map((device, index) => (
-                  <ItemDevice
-                    inList={true}
-                    addToGateway={addDeviceToGateway}
-                    key={index}
-                    device={device}
-                  />
-                ))}
-              </ul>
-            ) : (
-              <p>Device list is empty</p>
-            )
-          ) : (
-            <p> Waiting for devices list</p>
-          )}
-        </div>
-      </div>
+      <ListDevices listD={listD} addDeviceToGateway={addDeviceToGateway} />
     </section>
   );
 };
+
+export { UpdateG }

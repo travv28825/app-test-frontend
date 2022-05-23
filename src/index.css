@@ -20,6 +20,7 @@ body {
 .container {
   padding: 0 3rem;
 }
+/* HEADER */
 header {
   display: flex;
   position: fixed;
@@ -28,33 +29,21 @@ header {
   height: 2rem;
   box-shadow: 0 3px 13px;
 }
+header ul li{
+  display: flex;
+}
 header ul li:hover {
   background: rgb(59, 59, 59);
   color: white;
   border-bottom: 2px solid aqua;
 }
-header ul li a:hover {
-  color: white;
-}
-header ul li{
-  display: flex;
-}
 header ul li a{
   flex: 1;
 }
-.info-data {
-  margin-top: 3rem;
+header ul li a:hover {
+  color: white;
 }
-.content {
-  margin-top: 4rem;
-}
-.test {
-  text-align: center;
-}
-.title-h {
-  width: 5rem;
-}
-
+/* ACTIONS */
 .actions-gateway,
 .actions-device {
   flex: 1;
@@ -78,4 +67,18 @@ header ul li a{
   background: rgb(122, 121, 121);
   text-align: center;
   color: black;
+}
+
+/* ##### */
+.info-data {
+  margin-top: 3rem;
+}
+.content {
+  margin-top: 4rem;
+}
+.test {
+  text-align: center;
+}
+.title-h {
+  width: 5rem;
 }
