@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import Item from "./Item";
 import { deleteDevice, getAllDevice } from "../../services";
-import './style.css'
 
 export default () => {
   const [listDevices, setlistDevices] = useState([]);
@@ -23,7 +22,7 @@ export default () => {
 
   return (<>
     {listDevices?.length > 0
-      ? <ul className="device_list">
+      ? <ul className="item_list">
         {listDevices.map((el, index) => <Item key={index}
           deleteElement={() => deleteElement(el.uid)}
           element={el} />)}

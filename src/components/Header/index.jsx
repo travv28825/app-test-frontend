@@ -1,15 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { DeviceLinks } from "./DeviceLinks";
 import { GatewayLinks } from "./GatewayLinks";
+import './style.css'
 
 export default () => (
   <header>
-    <div className="title-h">
-      <NavLink to="/gateway/list">
-        <h3 className="test">Home</h3>
-      </NavLink>
-    </div>
+    <nav className="navigation">
     <GatewayLinks />
     <DeviceLinks />
+    </nav>
   </header>
 );

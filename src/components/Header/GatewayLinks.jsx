@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 export const GatewayLinks = () => {
     return (
-        <div className="actions-gateway">
+        <div className="link-container">
             <p>Gateways</p>
             <ul>
                 <li>

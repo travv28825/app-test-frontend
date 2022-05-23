@@ -5,7 +5,7 @@ function Layout({ children }) {
     <div className="app">
       <Header />
       <div className="container">
-        <div className="content">{children}</div>
+        {children}
       </div>
     </div>
   );

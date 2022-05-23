@@ -2,7 +2,6 @@ import ItemDevice from "./ItemDevice";
 
 export default ({ listD, addDeviceToGateway }) => (
     <div className="add_devices_list">
-        <div className="device_list">
             {listD ? (
                 listD.length > 0 ? (
                     <ul className="list_d">
@@ -21,6 +20,5 @@ export default ({ listD, addDeviceToGateway }) => (
             ) : (
                 <p> Waiting for devices list</p>
             )}
-        </div>
     </div>
 )

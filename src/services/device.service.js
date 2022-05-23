@@ -1,10 +1,12 @@
+import { API_DEVICE } from "../Utils/constants";
+
 export const getAllDevice = async () => {
     const requestOptions = {
         method: "GET",
         headers: { "Content-Type": "application/json" }
     };
     try {
-        const response = await fetch("http://localhost:5200/api/device", requestOptions)
+        const response = await fetch(API_DEVICE, requestOptions)
         const data = await response.json();
 
         return data
@@ -19,7 +21,7 @@ export const getOneDevice = async (serial) => {
         headers: { "Content-Type": "application/json" }
     };
     try {
-        const response = await fetch(`http://localhost:5200/api/device/${serial}`, requestOptions)
+        const response = await fetch(`${API_DEVICE}${serial}`, requestOptions)
         const data = await response.json();
 
         return data
@@ -35,7 +37,7 @@ export const addDevice = async (item) => {
         body: JSON.stringify(item),
     };
     try {
-        let response = await fetch(`http://localhost:5200/api/device`, requestOptions);
+        let response = await fetch(API_DEVICE, requestOptions);
         let data = await response.json();
 
         return data
@@ -51,9 +53,9 @@ export const updateDevice = async (item) => {
         body: JSON.stringify(item),
     };
     try {
-        const response = await fetch(`http://localhost:5200/api/device/${item.uid}`, requestOptions);
+        const response = await fetch(`${API_DEVICE}${item.uid}`, requestOptions);
         const data = await response.json();
-        
+
         return data;
     } catch (error) {
         return { message: `Error: Error with the server, try again later` }
@@ -67,7 +69,7 @@ export const deleteDevice = async (uid) => {
         headers: { "Content-Type": "application/json" }
     };
     try {
-        const response = await fetch(`http://localhost:5200/api/device/${uid}`, requestOptions);
+        const response = await fetch(`${API_DEVICE}${uid}`, requestOptions);
         const data = await response.json();
 
         return data

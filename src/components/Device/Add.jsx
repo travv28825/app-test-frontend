@@ -8,7 +8,7 @@ export default () => {
     date: '',
     status: "online",
   });
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   function handleData(e) {
     const { name, value } = e.target;
@@ -17,15 +17,13 @@ export default () => {
 
   function handleSubmit() {
     addDevice(data).then((response) => {
-      if (response.success) {
-        // setData({
-        //   uid: "",
-        //   vendor: "",
-        //   date: "",
-        //   status: "",
-        // });
-      }
-      setError(response.message);
+      setData({
+        uid: "",
+        vendor: "",
+        date: "",
+        status: "",
+      });
+      setMessage(response.message);
     });
   }
 
@@ -65,7 +63,7 @@ export default () => {
         </div>
         <div className="add_buttons">
           <button onClick={handleSubmit}>Add device</button>
-          {error === "" ? "" : <p>{error}</p>}
+          {message === "" ? "" : <p>{message}</p>}
         </div>
       </div>
     </section>

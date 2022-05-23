@@ -21,7 +21,7 @@ const ListG = () => {
   }
 
   return (
-    <ul className="gateway_list">
+    <ul className="item_list">
       {listG.length > 0 &&
         listG.map((el, index) => <Item key={index} element={el} deleteElement={handleDelete} />)}
     </ul>

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 export const DeviceLinks = () => {
     return (
-        <div className="actions-device">
+        <div className="link-container">
             <p>Devices</p>
             <ul>
                 <li>

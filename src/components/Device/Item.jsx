@@ -1,22 +1,9 @@
 import { Link } from "react-router-dom";
+import { Actions } from "../Actions";
 
 export default ({ element, deleteElement }) => (
-  <li>
-    <div className="actions">
-      <Link
-        className="btn_action_update"
-        to={`/device/update/${element.uid}`}
-      >
-        Update
-      </Link>
-      <Link
-        className="btn_action_delete"
-        onClick={deleteElement}
-        to=""
-      >
-        Delete
-      </Link>
-    </div>
+  <li className="item">
+    <Actions path="/device/update/" onDelete={deleteElement} id={element.uid}/>
     <p>UID: {element.uid}</p>
     <p>Vendor: {element.vendor}</p>
     <p>Created: {dateFormat(element.created, "dd-MM-yy")}</p>

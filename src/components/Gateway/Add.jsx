@@ -8,7 +8,7 @@ const AddG = () => {
   const [data, setData] = useState({ serial: "", human: "", ip: "" });
   const [listD, setListD] = useState([]);
   const [deviceG, setDeviceG] = useState([]);
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     getAllDevice().then(setListD);
@@ -29,7 +29,7 @@ const AddG = () => {
       setDeviceG(arr);
       setListD(newList);
     } else {
-      setError("A gateway only cant 10 devices");
+      setMessage("A gateway only cant 10 devices");
     }
   }
 
@@ -54,7 +54,7 @@ const AddG = () => {
           setDeviceG([]);
         }
       }
-      setError(data.message);
+      setMessage(data.message);
     });
   }
 
@@ -98,10 +98,10 @@ const AddG = () => {
         </div>
         <div className="add_buttons">
           <button onClick={handleSubmit}>Add gateway</button>
-          {error === "" ? "" : <p>{error}</p>}
+          {message === "" ? "" : <p>{message}</p>}
         </div>
       </div>
-      <ListDevices addDeviceToGateway={addDeviceToGateway} listD={listD}/>
+      <ListDevices addDeviceToGateway={addDeviceToGateway} listD={listD} />
     </section>
   );
 };

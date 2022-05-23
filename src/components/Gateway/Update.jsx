@@ -87,6 +87,7 @@ const UpdateG = () => {
             placeholder="Serial number"
             name="serial"
             value={data?.serial}
+            disabled={true}
             onChange={handleData}
             type="number"
           />
