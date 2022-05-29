@@ -1,0 +1,53 @@
+.new-gateway {
+  height: 10rem;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.add-header {
+  width: 100%;
+  height: 1rem;
+  align-items: center;
+  text-align: center;
+  padding: 0.4rem;
+}
+
+.add-body {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs-group {
+  display: flex;
+  padding: 0.2rem;
+}
+
+.add-body button {
+  margin: 0.3rem;
+  flex: 1;
+}
+
+.devices-group {
+  flex: 1;
+  overflow: hidden;
+  max-height: 105px;
+  border: 1px solid #979797;
+  padding-top: 0.1rem;
+}
+
+.devices-group ul {
+  width: 99%;
+  height: 98%;
+  margin: 0 auto;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: auto auto;
+}

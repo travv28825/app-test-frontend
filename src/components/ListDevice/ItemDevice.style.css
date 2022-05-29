@@ -1,0 +1,19 @@
+.item-device {
+  margin: 0.5rem;
+  border: 1px solid white;
+  padding: 0.5rem;
+  position: relative;
+  background: white;
+  max-width: 250px;
+}
+
+.item-device span {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.actions-device {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+}

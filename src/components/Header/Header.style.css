@@ -1,0 +1,33 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 2rem;
+  border-bottom: 1px solid #cecece;
+  background: #0348a1;
+  display: flex;
+}
+
+header h3 {
+  margin: 0.3rem 5rem;
+}
+
+header h3,
+.links-header a {
+  color: white;
+}
+
+.links-header ul {
+  display: flex;
+  height: 100%;
+}
+
+.links-header li {
+  align-self: center;
+}
+
+.links-header a {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid;
+  margin: 0.2rem;
+}
