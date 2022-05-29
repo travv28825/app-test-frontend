@@ -1,0 +1,16 @@
+.list-device {
+  height: 100%;
+  width: 300px;
+  background: #034a74;
+}
+
+.list-device h4 {
+  text-align: center;
+  padding: 5px 0 2px;
+  color: white;
+}
+
+.list-device ul {
+  max-height: 450px;
+  overflow-y: auto;
+}

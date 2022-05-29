@@ -1,11 +1,11 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -13,16 +13,65 @@ body {
   list-style: none;
   color: black;
 }
+
 .app {
   width: 100%;
   height: 100%;
 }
+
 .container {
-  padding: 0 3rem;
+  padding: 3rem;
+  height: calc(100vh - 4rem);
+  background: #e1e1e1db;
 }
 
+.msg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+}
 
-/* LIST */
+.msg p {
+  color: white;
+}
+
+.msg-success {
+  border-left: 4px solid green;
+  background: #0348a1;
+}
+
+.msg-danger {
+  border-left: 4px solid #ffcd0f;
+  background: #a10309;
+}
+
+.btn {
+  border: 1px solid;
+  padding: 5px;
+  text-align: center;
+  vertical-align: sub;
+  margin-left: 1;
+  border-radius: 5px;
+  background: #cecece;
+}
+
+.btn-update {
+  background: #048904;
+  color: white;
+}
+
+.btn-delete {
+  background: #b90b0b;
+  color: white;
+}
+
+.online {
+  padding: 3px;
+  color: #0202f9;
+}
+
+/* LIST
 .item_list {
   margin: 3rem;
   width: 400px;
@@ -40,7 +89,7 @@ body {
   background: white;
   box-shadow: 0 0 2px black;
 }
-/* BUTTONS */
+/* BUTTONS
 .actions {
   position: absolute;
   top: 0;
@@ -50,32 +99,14 @@ body {
   display: flex;
   flex-direction: column;
 }
-.btn {
-  border: 1px solid;
-  padding: 5px;
-  text-align: center;
-  vertical-align: sub;
-  margin-left: 1;
-  border-radius: 5px;
-}
-.update {
-  background: #048904;
-  color: white;
-}
-.delete {
-  background: #b90b0b;
-  color: white;
-}
 
-/* ##### */
+
+/* #####
 .info-data {
   margin-top: 3rem;
 }
-.online {
-  padding: 3px;
-  color: #0202f9;
-}
+
 .offline {
   padding: 3px;
   color: #010118;
-}
+} */
