@@ -1,71 +1,74 @@
 import { useState } from 'react';
 
-import { addDevice } from '../../../services';
+import { useGateway } from '../../../providers/Gateway';
+import { deviceService } from '../../../services';
+
+import './NewDevice.style.css';
 
 const DEFAULT_DEVICE_DATA = {
-  uid: '', vendor: '', date: '', status: 'online',
-}
+  uid: '',
+  vendor: '',
+  date: '',
+  status: 'online',
+};
 
-function AddDevice() {
-  const [message, setMessage] = useState('');
+function NewDevice() {
   const [deviceData, setDeviceData] = useState(DEFAULT_DEVICE_DATA);
+  const { showMessage, showError, getData } = useGateway();
 
   function handleData(event) {
     const { name, value } = event.target;
     setDeviceData({ ...deviceData, [name]: value });
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     try {
-      const response = await addDevice(deviceData)
+      const response = await deviceService.add(deviceData);
 
-      if (response) {
-        setDeviceData(DEFAULT_DEVICE_DATA);
-        setMessage(response.message);
-      }
+      setDeviceData(DEFAULT_DEVICE_DATA);
+      showMessage(response.message);
+      getData();
     } catch (error) {
-      // TODO: handle properly
-      console.error(error)
+      showError(error.message);
     }
   }
 
   return (
-    <section className="add_section">
-      <div className="">
-        <div className="add_inputs">
-          <input
-            placeholder="ID"
-            name="uid"
-            value={deviceData.uid}
-            onChange={handleData}
-            type="number"
-          />
-          <input
-            placeholder="Vendor"
-            name="vendor"
-            value={deviceData.vendor}
-            onChange={handleData}
-            type="text"
-          />
-          <input
-            placeholder="Date"
-            name="date"
-            value={deviceData.date}
-            onChange={handleData}
-            type="date"
-          />
-          <select name="status" value={deviceData.status} onChange={handleData}>
-            <option value="online">Online</option>
-            <option value="offline">Offline</option>
-          </select>
-        </div>
-        <div className="add_buttons">
-          <button onClick={handleSubmit}>Add device</button>
-          {message === '' ? '' : <p>{message}</p>}
-        </div>
+    <section className="new-device">
+      <div className="inputs-device">
+        <input
+          placeholder="ID"
+          name="uid"
+          value={deviceData.uid}
+          onChange={handleData}
+          type="number"
+        />
+        <input
+          placeholder="Vendor"
+          name="vendor"
+          value={deviceData.vendor}
+          onChange={handleData}
+          type="text"
+        />
+        <input
+          placeholder="Date"
+          name="date"
+          value={deviceData.date}
+          onChange={handleData}
+          type="date"
+        />
+        <select name="status" value={deviceData.status} onChange={handleData}>
+          <option value="online">Online</option>
+          <option value="offline">Offline</option>
+        </select>
+      </div>
+      <div className="buttons-device">
+        <button className="btn btn-update" onClick={handleSubmit}>
+          Add device
+        </button>
       </div>
     </section>
   );
 }
 
-export { AddDevice };
+export default NewDevice;

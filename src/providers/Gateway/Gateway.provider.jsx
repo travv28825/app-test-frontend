@@ -32,6 +32,9 @@ const GatewayProvider = ({ children }) => {
   function showError(error) {
     dispatch({ type: 'REQUEST_ERROR', payload: error });
   }
+  function showMessage(message) {
+    dispatch({ type: 'SHOW_MESSAGE', payload: message });
+  }
 
   function addDevicesToUpdate(device) {
     dispatch({ type: 'DEVICE_TO_UPDATE', payload: device });
@@ -95,6 +98,7 @@ const GatewayProvider = ({ children }) => {
     removeDeviceInGateway,
     addGateway,
     showError,
+    showMessage,
     addDevicesToUpdate,
     removeGateway,
     editGateway,

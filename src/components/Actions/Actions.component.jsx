@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 
 import './Actions.style.css';
 
-function Actions({ onDelete, id, actionUpdate }) {
+function Actions({ actionDelete, actionUpdate }) {
   return (
     <div className="actions">
       <Link className="btn btn-update" to="" onClick={actionUpdate}>
         Update
       </Link>
-      <Link className="btn btn-delete" onClick={() => onDelete(id)} to="">
+      <Link className="btn btn-delete" to="" onClick={actionDelete}>
         Delete
       </Link>
     </div>

@@ -9,9 +9,7 @@ function ItemGateway({ gateway }) {
   return (
     <li className="item-gateway">
       <Actions
-        path="/gateway/update/"
-        id={gateway.serial}
-        onDelete={removeGateway}
+        actionDelete={() => removeGateway(gateway.serial)}
         actionUpdate={() => changeUpdatingMode(gateway)}
       />
       <p>Serial number: {gateway.serial}</p>

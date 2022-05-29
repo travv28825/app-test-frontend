@@ -55,7 +55,9 @@ function NewGateway() {
               onChange={handleChange}
               type="text"
             />
-            <button onClick={handleSubmit}>Add</button>
+            <button className="btn btn-update" onClick={handleSubmit}>
+              Add
+            </button>
           </div>
           <div className="devices-group">
             <ul className="">

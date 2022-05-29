@@ -27,7 +27,7 @@ body {
 
 .msg {
   position: absolute;
-  top: 0;
+  top: 2.5rem;
   right: 0;
   padding: 0.5rem;
 }
@@ -46,14 +46,20 @@ body {
   background: #a10309;
 }
 
+input,
+select {
+  margin: 0.3rem;
+  padding: 0.6rem;
+}
+
 .btn {
   border: 1px solid;
-  padding: 5px;
+  padding: 0.6rem;
   text-align: center;
   vertical-align: sub;
   margin-left: 1;
-  border-radius: 5px;
   background: #cecece;
+  font-weight: 400;
 }
 
 .btn-update {
