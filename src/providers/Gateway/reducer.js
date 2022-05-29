@@ -113,6 +113,11 @@ const GatewayReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload,
       };
+    case 'SHOW_MESSAGE':
+      return {
+        ...state,
+        message: action.payload,
+      };
     default:
       return state;
   }

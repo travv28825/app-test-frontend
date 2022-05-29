@@ -1,8 +1,6 @@
 import { useGateway } from '../../../providers/Gateway';
 import * as utils from '../../../utils/utils';
 
-import './ItemDevice.style.css';
-
 function ItemDevice({ device, inList }) {
   const {
     state,
@@ -16,7 +14,7 @@ function ItemDevice({ device, inList }) {
 
   function handleDevice() {
     if (!state.isUpdating) {
-      if (state.devicesToAdding.length <= 10) {
+      if (state.devicesToAdding.length < 10) {
         prepareDeviceToAdd(device);
       } else {
         showError('An gateway only can have 10 devices!');

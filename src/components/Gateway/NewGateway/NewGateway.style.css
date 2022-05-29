@@ -27,21 +27,11 @@
 
 .inputs-group {
   display: flex;
-}
-
-.inputs-group input,
-.inputs-group select {
-  margin: 0.3rem;
-  padding: 5px;
+  padding: 0.2rem;
 }
 
 .add-body button {
-  padding: 6px;
   margin: 0.3rem;
-  background: #1c8a21;
-  color: white;
-  border: 0;
-  box-shadow: 0 0 2px black;
   flex: 1;
 }
 

@@ -1,126 +1,81 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getOneDevice, updateDevice } from '../../../services';
-import { formatData } from '../../../utils/utils';
 
-function UpdateDevice() {
-  const { uid } = useParams();
-  const [error, setError] = useState('');
-  // TODO: extract to constant
-  const [data, setData] = useState({
-    uid: 0,
-    vendor: '',
-    created: '',
-    status: '',
-  });
+import { useGateway } from '../../../providers/Gateway';
+import { deviceService } from '../../../services';
+import { changeDateFormat } from '../../../utils/utils';
+
+const dateNow = changeDateFormat(new Date(), 'mm-dd-yy');
+const DEFAULT_DEVICE_DATA = {
+  uid: '',
+  vendor: '',
+  date: dateNow,
+  status: 'online',
+};
+
+function UpdateDevice({ device, hideUpdateMode }) {
+  const { showMessage, showError, getData } = useGateway();
+  const [data, setData] = useState(DEFAULT_DEVICE_DATA);
 
   useEffect(() => {
-    // TODO: use async/await
-    getOneDevice(uid).then(setData);
-  }, []);
+    setData({
+      ...device,
+      created: changeDateFormat(device.created, 'yyyy-MM-dd'),
+    });
+  }, [device]);
 
-  // TODO: rename argument
-  function handleData(e) {
-    const { name, value } = e.target;
+  function handleChange(event) {
+    const { name, value } = event.target;
     setData({ ...data, [name]: value });
   }
 
-  function handleSubmit() {
-    // TODO: use async/await
-    updateDevice(data).then(({ success, message }) => {
-      setError(message);
-    });
+  async function editGateway() {
+    try {
+      const response = await deviceService.update(data.uid, data);
+      showMessage(response.message);
+      getData();
+      hideUpdateMode();
+    } catch (error) {
+      showError(error.message);
+    }
   }
 
   return (
-    <section className="add-section">
-      <div className="">
-        {/* TODO: review className style */}
-        <div className="add_inputs">
-          <input
-            placeholder="Serial number"
-            name="uid"
-            disabled={true}
-            {/* TODO: review if data would be nullable */}
-            value={data?.uid}
-            onChange={handleData}
-            type="number"
-          />
-          <input
-            placeholder="Human readable name"
-            name="vendor"
-            value={data?.vendor}
-            onChange={handleData}
-            type="text"
-          />
-          <input
-            placeholder="IPv4"
-            name="created"
-            value={formatData(data?.created, 'yyyy-MM-dd')}
-            onChange={handleData}
-            type="date"
-          />
-          <select name="status" value={data.status} onChange={handleData}>
-            <option value="online">Online</option>
-            <option value="offline">Offline</option>
-          </select>
-        </div>
-        <div className="add_buttons">
-          <button onClick={handleSubmit}>Update Device</button>
-          {/* TODO: consider having an error as null */}
-          {error === '' ? '' : <p>{error}</p>}
-        </div>
+    <section className="new-section">
+      <div className="inputs-device">
+        <input
+          placeholder="Serial number"
+          name="uid"
+          disabled={true}
+          value={data.uid}
+          onChange={handleChange}
+          type="number"
+        />
+        <input
+          placeholder="Human readable name"
+          name="vendor"
+          value={data.vendor}
+          onChange={handleChange}
+          type="text"
+        />
+        <input
+          placeholder="IPv4"
+          name="created"
+          value={data.created}
+          onChange={handleChange}
+          type="date"
+        />
+        <select name="status" value={data.status} onChange={handleChange}>
+          <option value="online">Online</option>
+          <option value="offline">Offline</option>
+        </select>
       </div>
-
-      {/* <div className="add_devices_list">
-        <div className="device_list">
-          {listD ? (
-            listD.length > 0 ? (
-              <ul className="list_d">
-                {listD.map((device, index) => (
-                  <ItemDevice
-                    inList={true}
-                    addToGateway={addDeviceToGateway}
-                    key={index}
-                    device={device}
-                  />
-                ))}
-              </ul>
-            ) : (
-              <p>Device list is empty</p>
-            )
-          ) : (
-            <p> Waiting for devices list</p>
-          )}
-        </div>
-      </div> */}
+      <div className="buttons-device">
+        <button className="btn btn-update" onClick={editGateway}>
+          Update Device
+        </button>
+      </div>
     </section>
   );
 }
 
-function dateFormat(inputDate, format) {
-  //parse the input date
-  const date = new Date(inputDate);
-
-  //extract the parts of the date
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-
-  //replace the month
-  format = format.replace('MM', month.toString().padStart(2, '0'));
-
-  //replace the year
-  if (format.indexOf('yyyy') > -1) {
-    format = format.replace('yyyy', year.toString());
-  } else if (format.indexOf('yy') > -1) {
-    format = format.replace('yy', year.toString().substr(2, 2));
-  }
-
-  //replace the day
-  format = format.replace('dd', day.toString().padStart(2, '0'));
-
-  return format;
-}
-
-export { UpdateDevice };
+export default UpdateDevice;

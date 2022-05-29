@@ -16,8 +16,8 @@ function ListGateway() {
         <ul className="list-items">
           {hasGateways
             ? state.gateways.map((itemGateway) => (
-              <ItemGateway key={itemGateway.serial} gateway={itemGateway} />
-            ))
+                <ItemGateway key={itemGateway.serial} gateway={itemGateway} />
+              ))
             : ''}
         </ul>
       </div>

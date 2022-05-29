@@ -1,0 +1,17 @@
+.container-device {
+  position: relative;
+  height: 80%;
+  display: grid;
+  grid-template-columns: auto auto;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.container-device .list-device {
+  width: calc(100% - 3rem);
+  margin-left: 3rem;
+}
+
+.container-device .item-device {
+  max-width: 100%;
+}
