@@ -1,0 +1,24 @@
+.item-gateway {
+  position: relative;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #4c4c4c;
+  background: lightgrey;
+}
+
+.item-gateway-devices {
+  width: 95%;
+  box-shadow: 0 0 2px;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.item-gateway-devices li {
+  border: 1px solid green;
+  margin: 0.5rem;
+  width: 85%;
+  padding: 5px;
+}

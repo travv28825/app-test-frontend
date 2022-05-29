@@ -1,0 +1,46 @@
+.update-gateway {
+  position: absolute;
+  width: 500px;
+  box-shadow: 3px 4px 13px rgb(128 128 128 / 15%);
+  height: 450px;
+  border-radius: 10px;
+  top: 0;
+  left: calc(50%-250px);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.update-gateway .btn-update {
+  margin: auto 0;
+}
+
+.update-form {
+  overflow: hidden;
+  position: relative;
+}
+
+.update-form-field {
+  display: flex;
+  margin: 0.5rem;
+}
+
+.update-form input {
+  padding: 5px;
+  width: 70%;
+  flex: 1;
+  margin-left: 1rem;
+  border: 1px solid #818181;
+}
+
+.update-device {
+  border: 1px solid rgb(179, 179, 179);
+  flex: 1;
+  max-height: 450px;
+}
+
+.update-device-list {
+  max-height: 300px;
+  overflow-y: auto;
+}

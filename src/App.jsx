@@ -1,14 +1,19 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import RouterApp from "../src/components/Router";
-import Layout from "./components/layouts/Layout";
+import Layout from './components/layouts/Layout';
+import RouterApp from './components/Router/Router.Component';
+import GatewayProvider from './providers/Gateway/Gateway.provider';
 
-const App = () => (
-  <Router>
-    <Layout>
-      <RouterApp />
-    </Layout>
-  </Router>
-);
+function App() {
+  return (
+    <GatewayProvider>
+      <Router>
+        <Layout>
+          <RouterApp />
+        </Layout>
+      </Router>
+    </GatewayProvider>
+  );
+}
 
 export default App;
